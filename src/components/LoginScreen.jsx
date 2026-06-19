@@ -29,9 +29,11 @@ export function LoginScreen({ onLogin }) {
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-red-600/30">
-            <Lock size={28} className="text-white" />
-          </div>
+          <img
+            src={`${import.meta.env.BASE_URL}logo-agora.png`}
+            alt="Agora Marketing"
+            className="w-24 h-24 rounded-3xl object-cover mx-auto mb-4 shadow-lg shadow-black/30 bg-white"
+          />
           <h1 className="text-2xl font-bold text-white">Wesley Motos</h1>
           <p className="text-slate-400 text-sm mt-1">Dashboard de Tráfego</p>
           <p className="text-slate-500 text-xs mt-0.5">Agora Marketing</p>
