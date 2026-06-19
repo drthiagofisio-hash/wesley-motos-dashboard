@@ -342,7 +342,7 @@ function FluxoImport({ modo, semanaNum, setSemanaNum, dataInicio, setDataInicio,
 export function ImportCSV() {
   const { imports, adsImports } = useApp();
   const [modoAtivo, setModoAtivo] = useState('camp');
-  const [semanaNum, setSemanaNum] = useState(Math.max(imports.length, adsImports.length) + 1);
+  const [semanaNum, setSemanaNum] = useState(imports.length > 0 ? imports.length : 1);
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
   const [sucesso, setSucesso] = useState('');
@@ -403,10 +403,14 @@ export function ImportCSV() {
           dataFim={dataFim}
           setDataFim={setDataFim}
           onSucesso={() => {
-            setSucesso(modoAtivo === 'camp'
-              ? `Semana ${semanaNum} salva com sucesso.`
-              : `Dados de anúncios da Semana ${semanaNum} salvos.`);
-            setSemanaNum(s => s + 1);
+            if (modoAtivo === 'camp') {
+              setSucesso(`Período ${semanaNum} — dados de campanha salvos. Agora importe os dados de Anúncios para o mesmo período.`);
+              setModoAtivo('ads');
+            } else {
+              setSucesso(`Período ${semanaNum} — dados de anúncios salvos com sucesso!`);
+              setSemanaNum(s => s + 1);
+              setModoAtivo('camp');
+            }
           }}
         />
       </div>

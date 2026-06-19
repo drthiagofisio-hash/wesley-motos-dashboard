@@ -171,7 +171,7 @@ export function AppProvider({ children }) {
   const { weeklyData, weeklyAdsData, imports, adsImports, config, segmentacao, campanhasOcultas, anunciosOcultos } = state;
 
   const getWeekLabel = useCallback((week, formato = 'curto') => {
-    const imp = imports.find(i => i.week === week) || adsImports.find(i => i.week === week);
+    const imp = imports.find(i => i.week === week && i.dataInicio) || adsImports.find(i => i.week === week && i.dataInicio);
     if (!imp?.dataInicio) return `S${week}`;
     const fmtDate = (d) => {
       if (!d) return '';
