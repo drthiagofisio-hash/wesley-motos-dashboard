@@ -14,19 +14,19 @@ function Card({ icon: Icon, label, value, sub, color, trend }) {
   const c = colors[color] || colors.blue;
 
   return (
-    <div className={`${c.bg} rounded-xl p-5 border border-white shadow-sm`}>
+    <div className={`${c.bg} rounded-xl p-3 sm:p-5 border border-white shadow-sm`}>
       <div className="flex items-start justify-between">
-        <div className={`p-2.5 rounded-lg ${c.icon}`}><Icon size={20} /></div>
+        <div className={`p-2 sm:p-2.5 rounded-lg ${c.icon}`}><Icon size={18} /></div>
         {trend !== undefined && trend !== null && (
-          <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${trend >= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+          <span className={`text-xs font-medium px-1.5 py-0.5 rounded-full ${trend >= 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
             {trend >= 0 ? '▲' : '▼'} {Math.abs(trend).toFixed(1)}%
           </span>
         )}
       </div>
-      <div className="mt-4">
-        <p className="text-sm text-gray-500 font-medium">{label}</p>
-        <p className={`text-2xl font-bold mt-1 ${c.text}`}>{value}</p>
-        {sub && <p className="text-xs text-gray-400 mt-1">{sub}</p>}
+      <div className="mt-2 sm:mt-4">
+        <p className="text-xs sm:text-sm text-gray-500 font-medium">{label}</p>
+        <p className={`text-lg sm:text-2xl font-bold mt-0.5 sm:mt-1 ${c.text}`}>{value}</p>
+        {sub && <p className="text-xs text-gray-400 mt-0.5 hidden sm:block">{sub}</p>}
       </div>
     </div>
   );
@@ -45,7 +45,7 @@ export function SummaryCards({ resumo, resumoAnterior, rows = [] }) {
   const totalSeguidores = rows.reduce((s, r) => s + (r.followers || 0), 0);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-7 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3">
       <Card icon={DollarSign} label="Total Investido" value={fmtBRL(resumo.totalSpend)}
         sub="na semana selecionada" color="blue"
         trend={trend(resumo.totalSpend, resumoAnterior?.totalSpend)} />

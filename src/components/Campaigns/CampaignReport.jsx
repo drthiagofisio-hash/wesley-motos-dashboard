@@ -92,7 +92,7 @@ export function CampaignReport() {
   ];
 
   return (
-    <div className="p-6 space-y-5">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-5">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Relatório por Campanha</h1>

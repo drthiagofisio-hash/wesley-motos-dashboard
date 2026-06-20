@@ -42,7 +42,7 @@ export function WeeklyComparison() {
   const wTextColors = ['text-blue-700', 'text-purple-700', 'text-green-700', 'text-orange-700'];
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       <div>
         <h1 className="text-xl font-bold text-gray-900">Comparativo Semanal</h1>
         <p className="text-sm text-gray-500">Evolução de métricas ao longo das 4 semanas</p>

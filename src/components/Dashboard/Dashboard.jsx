@@ -56,32 +56,32 @@ export function Dashboard() {
   }, [rowsAnterior, verbaTotalSemanal, activeWeek]);
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+      <div className="space-y-3">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Dashboard Geral</h1>
-          <p className="text-sm text-gray-500">
-            Wesley Motos · Campanha de Tráfego · Balsas-MA
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">Dashboard Geral</h1>
+          <p className="text-xs sm:text-sm text-gray-500">
+            Wesley Motos · Balsas-MA
             {importAtual?.dataInicio && (
-              <span className="ml-2 text-red-600 font-medium">
+              <span className="ml-1 text-red-600 font-medium">
                 · {importAtual.dataInicio} até {importAtual.dataFim}
               </span>
             )}
           </p>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <div className="flex items-center gap-1 bg-white border border-gray-200 rounded-lg px-3 py-1.5 text-sm">
-            <span className="text-gray-500 font-medium">Período:</span>
+        <div className="flex flex-wrap gap-2">
+          <div className="flex items-center gap-1 bg-white border border-gray-200 rounded-lg px-2 sm:px-3 py-1.5 text-sm overflow-x-auto">
+            <span className="text-gray-500 font-medium text-xs sm:text-sm shrink-0">Período:</span>
             {[1, 2, 3, 4].map(w => (
               <button key={w} onClick={() => setActiveWeek(w)}
-                className={`px-2.5 py-1 rounded-md font-semibold transition-colors text-xs ${activeWeek === w ? 'bg-red-600 text-white' : 'hover:bg-gray-100 text-gray-600'}`}>
+                className={`px-2 py-1 rounded-md font-semibold transition-colors text-xs shrink-0 ${activeWeek === w ? 'bg-red-600 text-white' : 'hover:bg-gray-100 text-gray-600'}`}>
                 {getWeekLabel(w)}
               </button>
             ))}
           </div>
           <select value={activeTemp} onChange={e => setActiveTemp(e.target.value)}
-            className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-700">
-            <option value="todos">Todas as temperaturas</option>
+            className="text-xs sm:text-sm border border-gray-200 rounded-lg px-2 sm:px-3 py-1.5 bg-white text-gray-700">
+            <option value="todos">Todas as temp.</option>
             <option value="quente">🔴 Quente</option>
             <option value="morno">🟠 Morno</option>
             <option value="frio">🔵 Frio</option>
@@ -106,7 +106,7 @@ export function Dashboard() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
         <div className="lg:col-span-2">
           <WeeklyChart weeklyData={weeklyData} bmContext={bmContext} getWeekLabel={getWeekLabel} />
         </div>
